@@ -54,7 +54,7 @@ clean:
 	rm -f $(TARGET) $(OBJECTS)
 
 install: all
-	rm -f $(DEVKITXENON)/usr/include/SDL/ -R
-	mkdir $(DEVKITXENON)/usr/include/SDL/
-	cp -r include/* $(DEVKITXENON)/usr/include/SDL/ 
-	cp $(TARGET) $(DEVKITXENON)/usr/lib/$(TARGET)
+	mkdir -p $(DEVKITXENON)/usr/include/SDL/
+	cp -f -r src/video/xenon/SDL_xenonevents.h $(DEVKITXENON)/usr/include/SDL/ 
+	cp -f -r include/* $(DEVKITXENON)/usr/include/SDL/ 
+	cp -f $(TARGET) $(DEVKITXENON)/usr/lib/$(TARGET)
