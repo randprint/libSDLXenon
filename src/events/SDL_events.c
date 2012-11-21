@@ -27,6 +27,7 @@
 #include "SDL_syswm.h"
 #include "SDL_sysevents.h"
 #include "SDL_events_c.h"
+#include "SDL_xenonevents.h"
 #include "../timer/SDL_timer_c.h"
 #if !SDL_JOYSTICK_DISABLED
 #include "../joystick/SDL_joystick_c.h"
@@ -394,6 +395,7 @@ int SDL_PollEvent (SDL_Event *event)
 {
 	SDL_PumpEvents();
 
+	XENON_PumpEvents();
 	/* We can't return -1, just return 0 (no event) on error */
 	if ( SDL_PeepEvents(event, 1, SDL_GETEVENT, SDL_ALLEVENTS) <= 0 )
 		return 0;

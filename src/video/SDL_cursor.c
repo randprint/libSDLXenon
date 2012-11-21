@@ -322,6 +322,8 @@ void SDL_MoveCursor(int x, int y)
 {
 	SDL_VideoDevice *video = current_video;
 
+//safety, got a crash here when video wasn't inited
+if ( video ) {
 	/* Erase and update the current mouse position */
 	if ( SHOULD_DRAWCURSOR(SDL_cursorstate) ) {
 		/* Erase and redraw mouse cursor in new position */
@@ -333,6 +335,7 @@ void SDL_MoveCursor(int x, int y)
 		SDL_UnlockCursor();
 	} else if ( video->MoveWMCursor ) {
 		video->MoveWMCursor(video, x, y);
+		}
 	}
 }
 
